@@ -1,0 +1,110 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>fr.epsi</groupId>
+	<artifactId>formulaire-sans-session</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+
+	<developers>
+		<developer>
+			<name>Gabriel Fruhauf</name>
+			<email>gabriel.fruhauf@epsi.fr</email>
+		</developer>
+		<developer>
+			<name>Maxime Chevallier-Pichon</name>
+			<email>m.chevallierpichon@epsi.fr</email>
+		</developer>
+		<developer>
+			<name>Benjamin Eguimendia</name>
+			<email>benjamin.eguimendia@epsi.fr</email>
+		</developer>
+	</developers>
+
+	<properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.tomee</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>7.0-1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.myfaces.core</groupId>
+			<artifactId>myfaces-api</artifactId>
+			<version>2.2.11</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.tomee.maven</groupId>
+				<artifactId>tomee-maven-plugin</artifactId>
+				<version>7.0.2</version>
+				<configuration>
+					<tomeeVersion>7.0.2</tomeeVersion>
+					<tomeeClassifier>plus</tomeeClassifier>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+    <!-- Custom profil for Cargo deployment -->
+    <profiles>
+        <profile>
+            <id>CI</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.cargo</groupId>
+                        <artifactId>cargo-maven2-plugin</artifactId>
+                        <configuration>
+                            <!-- Container configuration -->
+                            <container>
+                                <containerId>tomcat7x</containerId>
+                                <type>remote</type>
+                            </container>
+                            <!-- Configuration to use with the container (which will also configure the deployer) -->
+                            <configuration>
+                                <type>runtime</type>
+                                <properties>
+                                    <cargo.remote.username>tomee</cargo.remote.username>
+                                    <cargo.remote.password>nbvcxw</cargo.remote.password>
+                                    <cargo.hostname>10.240.133.62</cargo.hostname>
+                                    <cargo.servlet.port>8080</cargo.servlet.port>
+                                    <cargo.tomcat.manager.url>http://10.240.133.62:8080/manager</cargo.tomcat.manager.url>
+                                </properties>
+                            </configuration>
+                            <!-- Deployables configuration -->
+                            <deployables>
+                                <deployable>
+                                    <groupId>fr.epsi</groupId>
+                                    <artifactId>formulaire-sans-session</artifactId>
+                                    <type>war</type>
+                                    <properties>
+                                        <context>latest</context>
+                                    </properties>
+                                    <!-- Change the IP by the one used by your TomEE server -->
+                                    <pingURL>http://10.240.133.62:8080</pingURL>
+                                </deployable>
+                            </deployables>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>
