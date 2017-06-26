@@ -85,7 +85,7 @@
                                     <cargo.remote.password>nbvcxw</cargo.remote.password>
                                     <cargo.hostname>10.240.133.153</cargo.hostname>
                                     <cargo.servlet.port>8080</cargo.servlet.port>
-                                    <cargo.tomcat.manager.url>http://10.240.133.153:8080/manager</cargo.tomcat.manager.url>
+                                    <cargo.tomcat.manager.url>http://10.240.133.153:8080/manager/text</cargo.tomcat.manager.url>
                                 </properties>
                             </configuration>
 
@@ -95,10 +95,10 @@
                                     <artifactId>formulaire-sans-session</artifactId>
                                     <type>war</type>
                                     <properties>
-                                        <context>latest</context>
+                                        <context>multipart-form</context>
                                     </properties>
                                     <!-- Change the IP by the one used by your TomEE server -->
-                                    <pingURL>http://10.240.133.153:8080</pingURL>
+                                    <pingURL>http://10.240.133.153:8080/multipart-form</pingURL>
                                 </deployable>
                             </deployables>
                         </configuration>
