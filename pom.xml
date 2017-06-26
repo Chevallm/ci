@@ -81,14 +81,11 @@
                                     <cargo.remote.password>nbvcxw</cargo.remote.password>
                                     <cargo.hostname>10.240.133.153</cargo.hostname>
                                     <cargo.servlet.port>8080</cargo.servlet.port>
-                                    <cargo.tomcat.manager.url>http://10.240.133.153:8080/manager/text</cargo.tomcat.manager.url>
                                 </properties>
                             </configuration>
 
                             <deployables>
                                 <deployable>
-                                    <groupId>fr.epsi</groupId>
-                                    <artifactId>formulaire-sans-session</artifactId>
                                     <type>war</type>
                                     <properties>
                                         <context>multipart-form</context>
