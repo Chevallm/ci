@@ -86,7 +86,6 @@
 
                             <deployables>
                                 <deployable>
-                                    <type>war</type>
                                     <properties>
                                         <context>multipart-form</context>
                                     </properties>
