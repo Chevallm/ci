@@ -68,8 +68,8 @@
 									<type>runtime</type>
 									<properties>
 											<!-- Change the IPs by the one used by your TomEE server -->
-											<cargo.remote.username>maxime</cargo.remote.username>
-											<cargo.remote.password>azerty</cargo.remote.password>
+											<cargo.remote.username>tomee</cargo.remote.username>
+											<cargo.remote.password>nbvcxw</cargo.remote.password>
 											<cargo.hostname>10.111.137.228</cargo.hostname>
 											<cargo.servlet.port>8080</cargo.servlet.port>
 									</properties>
@@ -81,7 +81,7 @@
 													<context>multipart-form</context>
 											</properties>
 											<!-- Change the IP by the one used by your TomEE server -->
-										
+
 									</deployable>
 							</deployables>
 					</configuration>
