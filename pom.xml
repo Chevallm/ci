@@ -81,7 +81,7 @@
 													<context>multipart-form</context>
 											</properties>
 											<!-- Change the IP by the one used by your TomEE server -->
-											<pingURL>10.111.137.228/multipart-form</pingURL>
+										
 									</deployable>
 							</deployables>
 					</configuration>
