@@ -55,48 +55,38 @@
 					<tomeeClassifier>plus</tomeeClassifier>
 				</configuration>
 			</plugin>
+			<plugin>
+					<groupId>org.codehaus.cargo</groupId>
+					<artifactId>cargo-maven2-plugin</artifactId>
+					<configuration>
+							<container>
+									<containerId>tomcat7x</containerId>
+									<type>remote</type>
+							</container>
+
+							<configuration>
+									<type>runtime</type>
+									<properties>
+											<!-- Change the IPs by the one used by your TomEE server -->
+											<cargo.remote.username>maxime</cargo.remote.username>
+											<cargo.remote.password>azerty</cargo.remote.password>
+											<cargo.hostname>10.111.137.228</cargo.hostname>
+											<cargo.servlet.port>8080</cargo.servlet.port>
+									</properties>
+							</configuration>
+
+							<deployables>
+									<deployable>
+											<properties>
+													<context>multipart-form</context>
+											</properties>
+											<!-- Change the IP by the one used by your TomEE server -->
+											<pingURL>10.111.137.228/multipart-form</pingURL>
+									</deployable>
+							</deployables>
+					</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
-    <!-- Custom profil for Cargo deployment -->
-    <profiles>
-        <profile>
-            <id>CI</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.codehaus.cargo</groupId>
-                        <artifactId>cargo-maven2-plugin</artifactId>
-                        <configuration>
-                            <container>
-                                <containerId>tomcat7x</containerId>
-                                <type>remote</type>
-                            </container>
-
-                            <configuration>
-                                <type>runtime</type>
-                                <properties>
-                                    <!-- Change the IPs by the one used by your TomEE server -->
-                                    <cargo.remote.username>tomee</cargo.remote.username>
-                                    <cargo.remote.password>nbvcxw</cargo.remote.password>
-                                    <cargo.hostname>10.240.133.153</cargo.hostname>
-                                    <cargo.servlet.port>8080</cargo.servlet.port>
-                                </properties>
-                            </configuration>
-
-                            <deployables>
-                                <deployable>
-                                    <properties>
-                                        <context>multipart-form</context>
-                                    </properties>
-                                    <!-- Change the IP by the one used by your TomEE server -->
-                                    <pingURL>http://10.240.133.153:8080/multipart-form</pingURL>
-                                </deployable>
-                            </deployables>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
 </project>
